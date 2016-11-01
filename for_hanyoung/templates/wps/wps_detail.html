@@ -1,0 +1,31 @@
+{% extends 'root/base.html' %}
+
+{% block content %}
+<div class="container">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-success panel text-center">{{ message }} </div>
+      {% endfor %}
+    {% endif %}
+    <div class="row">
+        <div class="col-sm-6 col-md-6" style='position:relative; z-index:100;'>
+            <h3>기본 이미지</h3>
+            <img class='detail_view' src="{{ one_wps.image.url }}" alt="그 사람 이미지">
+        </div>
+        <div class="col-sm-6">
+          <h3>{{ one_wps.full_name }}</h3>
+          <p>{{ one_wps.phonenumber }}</p>
+          <a href="{{ one_wps.github_address }}"><p> {{ one_wps.github_address }}</p></a>
+
+          <form action="" method='POST'>
+            {% csrf_token %}
+            <textarea placeholder='졸지 마세요' name="message" id="" cols="70" rows="10"></textarea>
+            <input type="hidden" name='phonenumber' value='{{ one_wps.phonenumber }}'>
+            <button class="btn btn-primary" type="submit">문자 보내기</button>
+
+          </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

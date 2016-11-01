@@ -1,0 +1,22 @@
+{% extends 'root/base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <h2 class='text-center'>어서오세요. 반갑습니다.</h2>
+            <div class="well">
+                <p>이 곳은 이한영을 위한, 이한영에 의한, 이한영의 블로그입니다.</p>
+                <p>후원금 받습니다.</p>
+
+            </div>
+            <img width='100%' src="{% static 'images/brand-logo.png' %}" alt="brand-logo">
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

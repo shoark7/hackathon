@@ -1,0 +1,12 @@
+{% extends 'root/base.html' %}
+
+{% block content %}
+<div>
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/{{reward.id.videoId}}" frameborder="0" allowfullscreen>
+
+</iframe>
+</div>
+{{reward.snippet.title}}
+
+<a href="{% url 'reward:reward_main' %}" class="btn btn-default btn-primary">뒤로</a>
+{% endblock %}
