@@ -3,11 +3,12 @@ from django.http import HttpResponse
 from .forms import SignupForm
 from django.contrib import messages
 from member.models import MyUser
+from django.contrib.auth import login as auth_login , authenticate as auth_authenticate,\
+    logout as auth_logout
 
 # Create your views here.
 def signup(request):
     context = {}
-    message = ''
     if request.method == 'POST':
         form = SignupForm(request.POST, request.FILES)
         if form.is_valid():
@@ -49,5 +50,34 @@ def signup(request):
         context['form'] = form
     return render(request, 'member/signup.html', context)
 
+
 def login(request):
-    return HttpResponse('hi')
+    next = request.GET.get('next')
+    context = {'username':'', 'password':''}
+    if request.method == 'POST':
+        try:
+            username = request.POST['username']
+            print('Username is ' + username)
+            password = request.POST['password']
+            # if username is None or password is None:
+            #     raise KeyError
+        except KeyError:
+            return HttpResponse('아이디와 비밀번호는 필수 입력사항입니다.')
+        else:
+            user = auth_authenticate(username=username, password=password)
+            if user is not None:
+                auth_login(request, user)
+                messages.success(request, '로그인에 성공했습니다.')
+                return redirect(next)
+            else:
+                messages.error(request, '로그인에 실패했습니다.')
+                context.update({'username': username, 'password': password})
+                return render(request, 'member/login.html', context)
+    else:
+        return render(request, 'member/login.html', context)
+
+def logout(request):
+    next = request.GET.get('next')
+    auth_logout(request)
+    return redirect(next)
+

@@ -23,8 +23,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{% url 'reward:reward_main' %}">빨리 끝났으면 좋겠다.</a></li>
         <li><a href="{% url 'wps:wps_list' %}">수강생 관리</a></li>
-        <li><a href="{% url 'member:login' %}">로그인</a></li>
-        <li><a href="{% url 'member:signup' %}">회원가입</a></li>
+        {% if not user.is_authenticated %}
+        <li><a href="{% url 'member:login' %}?next={{ request.path }}">로그인</a></li>
+        <li><a href="{% url 'member:signup' %}?next={{request.path}}">회원가입</a></li>
+        {% else %}
+        <li><a href="{% url 'member:logout' %}?next={{request.path}}">로그아웃</a></li>
+        {% endif %}
+
       </ul>
 
     </div>
