@@ -37,9 +37,11 @@ def signup(request):
                 return redirect('wps:wps_list')
             elif password1 != password2:
                 message = messages.warning(request, '입력하신 비밀번호가 다릅니다.')
+                context['form'] = form
 
             elif 'github' not in github_address:
                 message = messages.warning(request, '입력하신 주소는 깃허브 주소가 아닙니다.')
+                context['form'] = form
         else:
             message = '적절하지 않은 입력입니다.'
             context['form'] = form

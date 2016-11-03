@@ -27,6 +27,7 @@
         <li><a href="{% url 'member:login' %}?next={{ request.path }}">로그인</a></li>
         <li><a href="{% url 'member:signup' %}?next={{request.path}}">회원가입</a></li>
         {% else %}
+        <p style="color:blue;margin-bottom:0;display:inline-block; padding:15px 0;">{{ request.user.username}}님 반갑습니다.</p>
         <li><a href="{% url 'member:logout' %}?next={{request.path}}">로그아웃</a></li>
         {% endif %}
 
