@@ -38,7 +38,7 @@
             <form action="{% url 'wps:wps_list' %}" method='post'>
               {% csrf_token %}
               <p class='text-center bold'>수강생 모두에게 보내기</p>
-              <textarea rows='10' name='message' style='width:100%' placeholder="더 조는 것을 과시하지 않겠습니다."></textarea>
+              <textarea rows='10' name='message' style='width:100%' placeholder="더 조는 것을 좌시하지 않겠습니다."></textarea>
               <button id='send-text' class="full-width-button btn btn-primary" type="submit">문자 보내기</button>
             </form>
 

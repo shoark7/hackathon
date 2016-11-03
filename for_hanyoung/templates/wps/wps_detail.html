@@ -13,7 +13,8 @@
             <img class='detail_view' src="{{ one_wps.image.url }}" alt="그 사람 이미지">
         </div>
         <div class="col-sm-6">
-          <h3>{{ one_wps.full_name }}</h3>
+          <h3>신상정보</h3>
+          <p>{{ one_wps.full_name|capfirst }}</p>
           <p>{{ one_wps.phonenumber }}</p>
           <a href="{{ one_wps.github_address }}"><p> {{ one_wps.github_address }}</p></a>
 

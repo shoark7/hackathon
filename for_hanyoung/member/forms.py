@@ -62,15 +62,12 @@ class SignupForm(forms.Form):
     github_address = forms.URLField(
         max_length=50,
         widget=forms.URLInput(
-            attrs={'class': 'form-control',
-                   },
-
+            attrs={'class': 'form-control'},
         )
     )
     is_hanyoung = forms.BooleanField(
         required=False,
         widget=forms.CheckboxInput(
-
         ),
     )
     is_wps = forms.BooleanField(
