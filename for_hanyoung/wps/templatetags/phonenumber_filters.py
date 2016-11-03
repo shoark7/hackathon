@@ -5,4 +5,5 @@ register = template.Library()
 
 @register.filter(name='number_prettify')
 def number_prettify(number):
-    return number[:3] + '-' + number[3:7] + '-' + number[7:]
+    number_format = re.compile(r'(\d{3})(\d{4})(\d{4})')
+    return number_format.sub(r'\1-\2-\3', number)
