@@ -1,4 +1,5 @@
 {% extends 'root/base.html' %}
+{% load phonenumber_filters %}
 
 {% block content %}
 <div class="container">
@@ -15,7 +16,7 @@
         <div class="col-sm-6">
           <h3>신상정보</h3>
           <p>{{ one_wps.full_name|capfirst }}</p>
-          <p>{{ one_wps.phonenumber }}</p>
+          <p>{{ one_wps.phonenumber|number_prettify }}</p>
           <a href="{{ one_wps.github_address }}"><p> {{ one_wps.github_address }}</p></a>
 
           <form action="" method='POST'>

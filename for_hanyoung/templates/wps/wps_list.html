@@ -1,6 +1,6 @@
 {% extends 'root/base.html' %}
 {% load static %}
-
+{% load phonenumber_filters %}
 
 {% block content %}
 
@@ -14,7 +14,7 @@
             <img src="{{ wps.image.url }}" alt="기본 사진" style='height:150px' width='100%'>
             <div class="caption">
               <h4>{{ wps.full_name }}</h4>
-              <p>전화 번호 : {{ wps.phonenumber }}</p>
+              <p>전화 번호 : {{ wps.phonenumber|number_prettify }}</p>
               <p>깃허브 주소 : <a href="{{ wps.github_address }}">{{ wps.github_address }}</a></p>
               <a href="{% url 'wps:wps_detail' student_id=wps.id %}">
                 <button class="btn btn default full-width-button">살펴보기</button>
